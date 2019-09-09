@@ -3,6 +3,6 @@ console.log('hello world!');
 
 const http=require('http');
 
-http.createServer((reg,res)=>{
+http.createServer((req,res)=>{
   res.end('hello world!');
 }).listen(8080);

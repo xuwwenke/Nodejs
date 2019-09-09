@@ -3,20 +3,22 @@ const log=console.log;
 var buf1=new Buffer(256);
 
 log('buf1 length',buf1.length);
-log('buf1',buf1);
+log('\nbuf1',buf1);
 var buf2=new Buffer(250,256);
 log('buf2',buf2);
 
 for(var i=0;i<buf1.length;i++) buf1[i]=i;
-log('buf1',buf1);
+log('\nbuf1',buf1);
 
 var buf2=buf1.slice(250,256);
-log('buf2',buf2);
+log('\nbuf2',buf2);
 
+buf2.fill(0);
 buf1.fill(0,0,256);
 var buf2=buf1.slice(250,256);
 log('buf2',buf2);
 log('buf2',buf2.toJSON());
+log('\nbuf2\s JSON:',JSON.stringify(buf2));
 
 var buf2=buf1.slice(250,256);
 var arr=['a',0xba,0xdf,0x00,255,10];
