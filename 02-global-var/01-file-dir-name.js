@@ -17,7 +17,7 @@ switch(process.platform){
   default:
     fileName='something wrong';
 }
-log('fileName',fileNname);
+log('fileName',fileName);
 
 const path=require('path');
 fileName=path.join(__dirname,'views','login.html');
