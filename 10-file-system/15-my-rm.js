@@ -7,7 +7,7 @@ const log=console.log,
       dir=process.argv[2];
 
 if(typeof(dir)==='undefined'){
-  console.error('命令行出现错误，命令行参数不存在！');
+  console.error('命令行参数不存在！');
   process.exit(1);
 }
 if(!fs.existsSync(src)){
