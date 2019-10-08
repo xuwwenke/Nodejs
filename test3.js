@@ -1,5 +1,3 @@
-#!/usr/bin/node
-
 const log=console.log,
             fs = require('fs'),
                   dir = process.argv[2],
@@ -7,25 +5,26 @@ const log=console.log,
                               path = require('path');
 try{
   if(dir=='list'){
-    fs.readdir(__dirname,(err,files)=>{
-      files.forEach(function(files1){
-        fs.stat(files1,(err,stat)=>{
-          if(stat.isFile()){
-                        log('{"fileName":"%s","fileSize":"%s"}',files1,stat.size);
-                                  
-          }
-                  
-        })
-              
-      })
+    const show=(path1)=>fs.readdir(path1,(err,out)=>{
+      out.forEach(f => {
+                let path2 = path.resolve(path1,f),
+                    state = fs.lstatSync(path2);
+      if(state.isFile()){
+                  log("{fileName:",path.basename(path2),",fileSize:",fs.statSync(path2).size,"}");
+                          
+      }       
+            
+      });
       if(err){
                 console.error(err.message);
                       
       }
           
-    })
-      
-  }else if(dir=='mkdir'&&dir1=='folder'){
+    });
+        show(path.resolve(__dirname,'./'));
+          
+  }
+  else if(dir=='mkdir'&&dir1=='folder'){
         fs.mkdirSync('folder');
           
   }else if(typeof(dir) === 'undefined'){
