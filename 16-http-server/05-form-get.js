@@ -2,8 +2,8 @@
 
 const http = require('http'),
       url  = require('url'),
-      qs   = require('querystring'),
-      var items = [];
+      qs   = require('querystring');
+var items = [];
 http.createServer((req, res) => {
   var path = url.parse(req.url).pathname;
   if(path != '/') {
